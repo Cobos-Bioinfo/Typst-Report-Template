@@ -18,8 +18,11 @@ A clean and simple Typst template for academic reports and assignments with auto
 🎨 **Customizable** - Adjust title size and toggle table of contents
 
 ## Preview
+<!-- https://github.com/Cobos-Bioinfo/Typst-Report-Template/blob/main/Demo/report-preview.pdf -->
 
-*Example of the title page and document formatting*
+<object data="https://github.com/Cobos-Bioinfo/Typst-Report-Template/Demo/report-preview.pdf" type="application/pdf" width="100%" height="600px">
+    <p>Unable to display PDF file. <a href="https://github.com/Cobos-Bioinfo/Typst-Report-Template/Demo/report-preview.pdf">Download</a> instead.</p>
+</object>
 
 ## Installation
 
@@ -31,39 +34,24 @@ A clean and simple Typst template for academic reports and assignments with auto
 
 **Windows:**
 ```
-%APPDATA%\typst\packages\local\typst-report-template\0.1.0\
+%APPDATA%\typst\packages\local\Typst-Report-Template\DemoOS:**
 ```
-
-**macOS:**
+~/Library/Application Support/typst/packages/local/Typst-Report-Template/Demoux:**
 ```
-~/Library/Application Support/typst/packages/local/typst-report-template/0.1.0/
-```
-
-**Linux:**
-```
-~/.local/share/typst/packages/local/typst-report-template/0.1.0/
-```
-
-4. The directory should contain:
+~/.local/share/typst/packages/local/Typst-Report-Template/Demoe directory should contain:
    - `main.typ`
    - `typst.toml`
 
 ### Option 2: Git Clone
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/typst-report-template.git
-
-# Copy to Typst packages (Windows example)
-xcopy typst-report-template %APPDATA%\typst\packages\local\typst-report-template\0.1.0\ /E /I
-```
-
+git clone https://github.com/Cobos-Bioinfo/Typst-Report-Template.Demopst packages (Windows example)
+xcopy Typst-Report-Template Demoackages\local\Typst-Report-Template\Demo
 ## Quick Start
 
 Create a new `.typ` file and import the template:
 ```typst
-#import "@local/typst-report-template:0.1.0": report
-
-#show: report.with(
+#import "@local/Typst-Report-Template:Demoshow: report.with(
   title: "Your Report Title",
   course: "Course Name",
   author: "Your Name",
@@ -110,9 +98,7 @@ You can reference figures like @fig:example and sections.
 
 ### Basic Report (No TOC, No Bibliography)
 ```typst
-#import "@local/typst-report-template:0.1.0": report
-
-#show: report.with(
+#import "@local/Typst-Report-Template:Demoshow: report.with(
   title: "Lab Report 1",
   course: "BIOL 301",
   author: "Jane Smith",
@@ -124,9 +110,7 @@ Content here...
 
 ### Full Report (With TOC and Bibliography)
 ```typst
-#import "@local/typst-report-template:0.1.0": report
-
-#show: report.with(
+#import "@local/Typst-Report-Template:Demoshow: report.with(
   title: "Comprehensive Analysis of Machine Learning in Genomics",
   course: "CS 589 - Bioinformatics",
   author: "John Doe",
@@ -227,8 +211,7 @@ my-report/
 
 **"Package not found" error:**
 - Verify the template is installed in the correct directory
-- Check that the path includes `local/typst-report-template/0.1.0/`
-- Ensure both `template.typ` and `typst.toml` are present
+- Check that the path includes `local/Typst-Report-Template/Demoboth `template.typ` and `typst.toml` are present
 
 **Logo/images not showing:**
 - Use `image("path")` when loading images in the template parameters
