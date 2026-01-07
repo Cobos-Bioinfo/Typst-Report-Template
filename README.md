@@ -21,8 +21,8 @@ A clean and simple Typst template for academic reports and assignments with auto
 
 | | |
 |-|-|
-| <img src="Demo/report-preview_page-0001.jpg" width="350"> | <img src="Demo/report-preview_page-0002.jpg" width="350"> |
-| <img src="Demo/report-preview_page-0003.jpg" width="350"> | <img src="Demo/report-preview_page-0004.jpg" width="350"> |
+| <img src="Demo/report-preview_page-0001.jpg" width="1000"> | <img src="Demo/report-preview_page-0002.jpg" width="1000"> |
+| <img src="Demo/report-preview_page-0003.jpg" width="1000"> | <img src="Demo/report-preview_page-0004.jpg" width="1000"> |
 
 [View Full Example PDF](https://github.com/Cobos-Bioinfo/Typst-Report-Template/blob/main/Demo/report-preview.pdf)
 
