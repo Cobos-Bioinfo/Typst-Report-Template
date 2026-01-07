@@ -1,0 +1,10 @@
+[package]
+name = "typst-academic-template"
+version = "0.1.0"
+entrypoint = "main.typ"
+authors = ["Alejandro Cobos"]
+license = "MIT"
+description = "A clean and simple template for academic reports and assignments"
+homepage = "https://github.com/Cobos-Bioinfo/Typst-Report-Template"
+repository = "https://github.com/Cobos-Bioinfo/Typst-Report-Template"
+keywords = ["academic", "report", "template", "university"]
