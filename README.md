@@ -18,10 +18,9 @@ A clean and simple Typst template for academic reports and assignments with auto
 🎨 **Customizable** - Adjust title size and toggle table of contents
 
 ## Preview
-<!-- https://github.com/Cobos-Bioinfo/Typst-Report-Template/blob/main/Demo/report-preview.pdf -->
 
-<object data="https://github.com/Cobos-Bioinfo/Typst-Report-Template/Demo/report-preview.pdf" type="application/pdf" width="100%" height="600px">
-    <p>Unable to display PDF file. <a href="https://github.com/Cobos-Bioinfo/Typst-Report-Template/Demo/report-preview.pdf">Download</a> instead.</p>
+<object data="https://github.com/Cobos-Bioinfo/Typst-Report-Template/blob/main/Demo/report-preview.pdf" type="application/pdf" width="100%" height="600px">
+    <p>Unable to display PDF file. <a href="https://github.com/Cobos-Bioinfo/Typst-Report-Template/blob/main/Demo/report-preview.pdf">Download</a> instead.</p>
 </object>
 
 ## Installation
