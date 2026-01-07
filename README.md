@@ -13,7 +13,7 @@ A clean and simple Typst template for academic reports and assignments with auto
 📊 **Figure & Table Support** with automatic captions and numbering  
 💻 **Syntax-Highlighted Code Blocks** with light background  
 📚 **APA Bibliography** integration with `.bib` files  
-🔗 **Smart Cross-References** - Figures display as "Fig. X"
+🔗 **Smart Cross-References** - Figures display as "Fig. X"  
 📄 **Auto Headers/Footers** - Author and course in header, page numbers in footer  
 🎨 **Customizable** - Adjust title size and toggle table of contents
 
