@@ -19,102 +19,77 @@ A clean and simple Typst template for academic reports and assignments with auto
 
 ## Preview
 
-![](Demo/report-preview.pdf)
+[View Example PDF](https://github.com/Cobos-Bioinfo/Typst-Report-Template/blob/main/Demo/report-preview.pdf)
+
 
 ## Installation
 
-### Option 1: Manual Installation (Recommended)
+### Option 1: Install as a Local Typst Package (Recommended)
 
-1. Download this repository (Code → Download ZIP)
-2. Extract the files
-3. Copy the contents to your Typst local packages directory:
+Typst supports local packages that can be imported using `@local/...`.
 
-**Windows:**
-```
-%APPDATA%\typst\packages\local\Typst-Report-Template\DemoOS:**
-```
-~/Library/Application Support/typst/packages/local/Typst-Report-Template/Demoux:**
-```
-~/.local/share/typst/packages/local/Typst-Report-Template/Demoe directory should contain:
-   - `main.typ`
-   - `typst.toml`
+Clone the repository into Typst’s local package directory:
 
-### Option 2: Git Clone
+#### Linux / macOS
 ```bash
-# Clone the repository
-git clone https://github.com/Cobos-Bioinfo/Typst-Report-Template.Demopst packages (Windows example)
-xcopy Typst-Report-Template Demoackages\local\Typst-Report-Template\Demo
-## Quick Start
-
-Create a new `.typ` file and import the template:
-```typst
-#import "@local/Typst-Report-Template:Demoshow: report.with(
-  title: "Your Report Title",
-  course: "Course Name",
-  author: "Your Name",
-  logo: image("logo.png"),
-  show-toc: false,
-  bibliography-file: bibliography("references.bib", title: "References", style: "apa")
-)
-
-= Introduction
-
-Your content here...
-
-== Background
-
-More content with subsections.
-
-= Methods
-
-You can reference figures like @fig:example and sections.
-
-#figure(
-  image("chart.png", width: 70%),
-  caption: [Example figure]
-) <fig:example>
-
-= Results
-
-= Conclusion
+git clone https://github.com/Cobos-Bioinfo/Typst-Report-Template.git \
+  ~/.local/share/typst/packages/local/Typst-Report-Template/0.1.0
 ```
 
-## Parameters
+#### Windows (PowerShell)
+```powershell
+git clone https://github.com/Cobos-Bioinfo/Typst-Report-Template.git `
+  "$env:APPDATA\typst\packages\local\Typst-Report-Template\0.1.0"
+```
+After this, the template can be imported from any Typst project using `@local/Typst-Report-Template`.
 
-| Parameter | Type | Default | Description |
-|-----------|------|---------|-------------|
-| `title` | string | `"Report Title"` | Main document title |
-| `course` | string | `"Course Module"` | Course or module name (appears in header) |
-| `author` | string | `"Alejandro Cobos"` | Author name (appears in header) |
-| `logo` | content/none | `none` | University logo (use `image("path")` to load) |
-| `show-toc` | boolean | `false` | Show table of contents on separate page |
-| `bibliography-file` | content/none | `none` | Bibliography (use `bibliography("file.bib", ...)` to load) |
-| `title-size` | length | `24pt` | Font size for the title on title page |
+### Option 2: Use Directly in a Project (No Installation)
 
-## Usage Examples
-
-### Basic Report (No TOC, No Bibliography)
+If you don’t want to install the template globally, you can also copy the repository into your project:
+```
+my-report/
+├── report.typ
+└── Typst-Report-Template/
+    ├── template.typ
+    └── typst.toml
+```
+Then import it using a relative path:
 ```typst
-#import "@local/Typst-Report-Template:Demoshow: report.with(
+#import "Typst-Report-Template/template.typ": report
+```
+
+## Usage
+
+### Minimal Example
+```typst
+#import "@local/Typst-Report-Template/template.typ": report
+
+#show: report.with(
   title: "Lab Report 1",
   course: "BIOL 301",
   author: "Jane Smith",
 )
 
 = Introduction
-Content here...
+Your content starts here.
 ```
 
-### Full Report (With TOC and Bibliography)
+### Full Example (TOC + Bibliography)
 ```typst
-#import "@local/Typst-Report-Template:Demoshow: report.with(
+#import "@local/Typst-Report-Template/template.typ": report
+
+#show: report.with(
   title: "Comprehensive Analysis of Machine Learning in Genomics",
-  course: "CS 589 - Bioinformatics",
+  course: "CS 589 – Bioinformatics",
   author: "John Doe",
-  logo: image("university-logo.png"),
+  logo: image("logo.png"),
   show-toc: true,
-  bibliography-file: bibliography("references.bib", title: "References", style: "apa"),
-  title-size: 22pt,  // Slightly smaller title
+  bibliography-file: bibliography(
+    "references.bib",
+    title: "References",
+    style: "apa",
+  ),
+  title-size: 22pt,
 )
 
 = Introduction
@@ -129,29 +104,24 @@ See @fig:results for details.
 
 #figure(
   image("results.png", width: 80%),
-  caption: [Experimental results]
+  caption: [Experimental results],
 ) <fig:results>
 
 = Discussion
 = Conclusion
 ```
 
-### With Code Blocks
-```typst
-= Implementation
+## Parameters
 
-Here's the Python implementation:
-
-\```python
-def analyze_sequence(seq):
-    """Analyze DNA sequence."""
-    gc_content = (seq.count('G') + seq.count('C')) / len(seq)
-    return gc_content
-
-result = analyze_sequence("ATCGATCG")
-print(f"GC Content: {result:.2%}")
-\```
-```
+| Parameter | Type | Default | Description |
+|-----------|------|---------|-------------|
+| `title` | string | `"Report Title"` | Main document title |
+| `course` | string | `"Course Module"` | Course or module name (appears in header) |
+| `author` | string | `"Alejandro Cobos"` | Author name (appears in header) |
+| `logo` | content/none | `none` | University logo (use `image("path")` to load) |
+| `show-toc` | boolean | `false` | Show table of contents on separate page |
+| `bibliography-file` | content/none | `none` | Bibliography (use `bibliography("file.bib", ...)` to load) |
+| `title-size` | length | `24pt` | Font size for the title on title page |
 
 ## Styling Details
 
@@ -193,7 +163,7 @@ All headings are numbered (e.g., 1., 1.1., 1.1.1.)
 my-report/
 ├── report.typ           # Your main document
 ├── references.bib       # Bibliography file
-├── logo.png            # University logo
+├── logo.png             # University logo
 └── images/
     ├── chart1.png
     └── diagram.svg
@@ -208,7 +178,7 @@ my-report/
 
 **"Package not found" error:**
 - Verify the template is installed in the correct directory
-- Check that the path includes `local/Typst-Report-Template/Demoboth `template.typ` and `typst.toml` are present
+- Check that the path includes `local/Typst-Report-Template/Demo` both `template.typ` and `typst.toml` are present
 
 **Logo/images not showing:**
 - Use `image("path")` when loading images in the template parameters
