@@ -1,11 +1,15 @@
 // Report Template
 // Author: Alejandro Cobos
 
+// Default logo
+// Replace path with the logo you wish to appear by default 
+#let default-logo = image("path/to/your/logo.svg")
+
 #let report(
   title: "Report Title",
   course: "Course Module",
-  author: "Alejandro Cobos",
-  logo: none,
+  author: "Your Name",
+  logo: default-logo,
   show-toc: false,
   bibliography-file: none,
   body,
