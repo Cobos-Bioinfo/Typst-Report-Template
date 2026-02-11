@@ -1,5 +1,5 @@
 [package]
-name = "typst-academic-template"
+name = "academic-template"
 version = "0.1.0"
 entrypoint = "main.typ"
 authors = ["Alejandro Cobos"]

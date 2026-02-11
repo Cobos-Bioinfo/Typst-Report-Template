@@ -15,7 +15,7 @@ A clean and simple Typst template for academic reports and assignments with auto
 📚 **APA Bibliography** integration with `.bib` files  
 🔗 **Smart Cross-References** - Figures display as "Fig. X"  
 📄 **Auto Headers/Footers** - Author and course in header, page numbers in footer  
-🎨 **Customizable** - Adjust title size and toggle table of contents
+🎨 **Customizable** - Adjust styling and toggle table of contents
 
 ## Preview
 
@@ -26,48 +26,90 @@ A clean and simple Typst template for academic reports and assignments with auto
 
 [View Full Example PDF](https://github.com/Cobos-Bioinfo/Typst-Report-Template/blob/main/Demo/report-preview.pdf)
 
+## Prerequisites
+
+Before installing this template, you need to have Typst installed on your machine.
+
+**Install Typst**: Visit the [official Typst installation page](https://github.com/typst/typst#installation) and follow the instructions for your operating system.
 
 ## Installation
 
-### Option 1: Install as a Local Typst Package (Recommended)
+### Option 1: Manual Installation (Recommended for Beginners)
 
-Typst supports local packages that can be imported using `@local/...`.
+This method works on all platforms (Windows, macOS, Linux).
 
-Clone the repository into Typst’s local package directory:
+1. **Create the necessary directories** for Typst local packages:
 
-#### Linux / macOS
+   **Windows**:
+   ```
+   C:\Users\YourUsername\AppData\Roaming\typst\packages\local\academic-template\0.1.0
+   ```
+
+   **macOS/Linux**:
+   ```
+   ~/.local/share/typst/packages/local/academic-template/0.1.0
+   ```
+
+   You may need to create the `typst`, `packages`, `local`, `academic-template`, and `0.1.0` folders if they don't exist.
+
+2. **Download this repository** (click the green "Code" button → "Download ZIP") or clone it
+
+3. **Copy the following files** into the `0.1.0` folder you just created:
+   - `main.typ` (the template file)
+   - `typst.toml` (package configuration)
+   - `assets/` folder (optional - for your default logo)
+
+4. **Your final structure should look like this**:
+   ```
+   typst/packages/local/academic-template/0.1.0/
+   ├── main.typ
+   ├── typst.toml
+   └── assets/          # Optional: place your default logo here
+       └── logo.svg
+   ```
+
+5. **Done!** You can now import the template in any Typst project using:
+   ```typst
+   #import "@local/academic-template:0.1.0": report
+   ```
+
+### Option 2: Git Clone
+
+If you're comfortable with Git, you can clone directly into the local packages directory:
+
+**macOS/Linux**:
 ```bash
 git clone https://github.com/Cobos-Bioinfo/Typst-Report-Template.git \
-  ~/.local/share/typst/packages/local/Typst-Report-Template/0.1.0
+  ~/.local/share/typst/packages/local/academic-template/0.1.0
 ```
 
-#### Windows (PowerShell)
+**Windows (PowerShell)**:
 ```powershell
 git clone https://github.com/Cobos-Bioinfo/Typst-Report-Template.git `
-  "$env:APPDATA\typst\packages\local\Typst-Report-Template\0.1.0"
+  "$env:APPDATA\typst\packages\local\academic-template\0.1.0"
 ```
-After this, the template can be imported from any Typst project using `@local/Typst-Report-Template`.
 
-### Option 2: Use Directly in a Project (No Installation)
+### Option 3: Use Directly in a Project (No Installation)
 
-If you don’t want to install the template globally, you can also copy the repository into your project:
+If you don't want to install the template globally, copy the repository into your project:
 ```
 my-report/
 ├── report.typ
-└── Typst-Report-Template/
-    ├── template.typ
-    └── typst.toml
+└── academic-template/
+    ├── main.typ
+    ├── typst.toml
+    └── assets/
 ```
 Then import it using a relative path:
 ```typst
-#import "Typst-Report-Template/template.typ": report
+#import "academic-template/main.typ": report
 ```
 
 ## Usage
 
 ### Minimal Example
 ```typst
-#import "@local/Typst-Report-Template/template.typ": report
+#import "@local/academic-template:0.1.0": report
 
 #show: report.with(
   title: "Lab Report 1",
@@ -81,11 +123,11 @@ Your content starts here.
 
 ### Full Example (TOC + Bibliography)
 ```typst
-#import "@local/Typst-Report-Template/template.typ": report
+#import "@local/academic-template:0.1.0": report
 
 #show: report.with(
   title: "Comprehensive Analysis of Machine Learning in Genomics",
-  course: "CS 589 – Bioinformatics",
+  course: "CS 589 - Bioinformatics",
   author: "John Doe",
   logo: image("logo.png"),
   show-toc: true,
@@ -94,7 +136,6 @@ Your content starts here.
     title: "References",
     style: "apa",
   ),
-  title-size: 22pt,
 )
 
 = Introduction
@@ -122,11 +163,10 @@ See @fig:results for details.
 |-----------|------|---------|-------------|
 | `title` | string | `"Report Title"` | Main document title |
 | `course` | string | `"Course Module"` | Course or module name (appears in header) |
-| `author` | string | `"Alejandro Cobos"` | Author name (appears in header) |
+| `author` | string | `"Your Name"` | Author name (appears in header) |
 | `logo` | content/none | `none` | University logo (use `image("path")` to load) |
 | `show-toc` | boolean | `false` | Show table of contents on separate page |
 | `bibliography-file` | content/none | `none` | Bibliography (use `bibliography("file.bib", ...)` to load) |
-| `title-size` | length | `24pt` | Font size for the title on title page |
 
 ## Styling Details
 
@@ -155,14 +195,6 @@ All headings are numbered (e.g., 1., 1.1., 1.1.1.)
 - Automatic numbering
 - Figure references display as "Fig. X" instead of "Figure X"
 
-## Tips
-
-1. **Logo Files**: Place your logo in the same directory as your `.typ` file, or use a relative path
-2. **Bibliography**: Create a `references.bib` file in the same directory for citations
-3. **Images**: Keep all images in a subdirectory (e.g., `images/` or `figures/`)
-4. **Title Length**: If your title is long, reduce `title-size` to 22pt or 20pt to prevent overflow
-5. **Cross-References**: Label figures with `<fig:name>` and reference with `@fig:name`
-
 ## File Structure Example
 ```
 my-report/
@@ -178,21 +210,6 @@ my-report/
 
 - Typst 0.12.0 or later
 - Works with Typst CLI, Typst web app, and VS Code Typst extension
-
-## Troubleshooting
-
-**"Package not found" error:**
-- Verify the template is installed in the correct directory
-- Check that the path includes `local/Typst-Report-Template/Demo` both `template.typ` and `typst.toml` are present
-
-**Logo/images not showing:**
-- Use `image("path")` when loading images in the template parameters
-- Verify the file path is correct relative to your document
-- Use forward slashes `/` in paths, even on Windows
-
-**Bibliography not working:**
-- Load bibliography with `bibliography("file.bib", title: "References", style: "apa")`
-- Don't just pass the filename as a string
 
 ## Contributing
 
