@@ -34,9 +34,7 @@ Before installing this template, you need to have Typst installed on your machin
 
 ## Installation
 
-### Option 1: Manual Installation (Recommended for Beginners)
-
-This method works on all platforms (Windows, macOS, Linux).
+### Option 1: Manual Installation
 
 1. **Create the necessary directories** for Typst local packages:
 
