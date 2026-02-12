@@ -3,7 +3,7 @@
 
 // Default logo
 // Replace path with the logo you wish to appear by default 
-#let default-logo = image("path/to/your/logo.svg")
+#let default-logo = image("assets/logoipsum-404.svg")
 
 #let report(
   title: "Report Title",
