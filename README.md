@@ -15,7 +15,8 @@ A clean and simple Typst template for academic reports and assignments with auto
 📚 **APA Bibliography** integration with `.bib` files  
 🔗 **Smart Cross-References** - Figures display as "Fig. X"  
 📄 **Auto Headers/Footers** - Author and course in header, page numbers in footer  
-🎨 **Customizable** - Adjust styling and toggle table of contents
+🎨 **Customizable** - Adjust styling and toggle table of contents  
+🖼️ **Default Placeholder Logo** included - replace with your own
 
 ## Preview
 
@@ -39,37 +40,37 @@ Before installing this template, you need to have Typst installed on your machin
 1. **Create the necessary directories** for Typst local packages:
 
    **Windows**:
-   ```
+```
    C:\Users\YourUsername\AppData\Roaming\typst\packages\local\academic-template\0.1.0
-   ```
+```
 
    **macOS/Linux**:
-   ```
+```
    ~/.local/share/typst/packages/local/academic-template/0.1.0
-   ```
+```
 
-   You may need to create the `typst`, `packages`, `local`, `academic-template`, and `0.1.0` folders if they don't exist.
+   > **NOTE:** You may need to create the `typst`, `packages`, `local`, `academic-template`, and `0.1.0` folders if they don't exist.
 
 2. **Download this repository** (click the green "Code" button → "Download ZIP") or clone it
 
 3. **Copy the following files** into the `0.1.0` folder you just created:
    - `main.typ` (the template file)
    - `typst.toml` (package configuration)
-   - `assets/` folder (optional - for your default logo)
+   - `assets/` folder (contains the default placeholder logo)
 
 4. **Your final structure should look like this**:
-   ```
+```
    typst/packages/local/academic-template/0.1.0/
    ├── main.typ
    ├── typst.toml
-   └── assets/          # Optional: place your default logo here
-       └── logo.svg
-   ```
+   └── assets/
+       └── logoipsum-404.svg  # Default placeholder logo
+```
 
 5. **Done!** You can now import the template in any Typst project using:
-   ```typst
+```typst
    #import "@local/academic-template:0.1.0": report
-   ```
+```
 
 ### Option 2: Git Clone
 
@@ -119,7 +120,7 @@ Then import it using a relative path:
 Your content starts here.
 ```
 
-### Full Example (TOC + Bibliography)
+### Full Example (Custom Logo, TOC, Bibliography)
 ```typst
 #import "@local/academic-template:0.1.0": report
 
@@ -127,7 +128,7 @@ Your content starts here.
   title: "Comprehensive Analysis of Machine Learning in Genomics",
   course: "CS 589 - Bioinformatics",
   author: "John Doe",
-  logo: image("logo.png"),
+  logo: image("my-university-logo.png"),  // Replace default logo
   show-toc: true,
   bibliography-file: bibliography(
     "references.bib",
@@ -155,6 +156,64 @@ See @fig:results for details.
 = Conclusion
 ```
 
+### Using Citations
+
+To use citations in your document:
+
+1. **Create a `.bib` file** (e.g., `references.bib`) in the same directory as your document:
+```bibtex
+   @article{smith2024,
+     author  = {John Smith and Emily Johnson},
+     title   = {Artificial Intelligence in Modern Healthcare},
+     journal = {Journal of Medical Systems},
+     year    = {2024},
+     volume  = {48},
+     pages   = {1--15},
+   }
+```
+
+2. **Load the bibliography** in your template configuration:
+```typst
+   #show: report.with(
+     // ... other parameters
+     bibliography-file: bibliography(
+       "references.bib",
+       title: "References",  // Optional: customize title
+       style: "apa",         // Options: "apa", "ieee", "chicago-notes", etc.
+     ),
+   )
+```
+
+3. **Cite in your text** using `@` followed by the citation key:
+```typst
+   Recent research @smith2024 has demonstrated...
+```
+
+The bibliography will automatically appear at the end of your document.
+
+### Customizing the Logo
+
+The template includes a placeholder logo by default. To use your own:
+
+**Option 1 - Override in your document** (recommended):
+```typst
+#show: report.with(
+  logo: image("path/to/your-logo.png"),  // or .svg, .jpg
+  // ... other parameters
+)
+```
+
+**Option 2 - Replace the default in the template**:
+Navigate to the template installation and replace `assets/logoipsum-404.svg` with your logo file.
+
+**Option 3 - Disable the logo**:
+```typst
+#show: report.with(
+  logo: none,  // No logo on title page
+  // ... other parameters
+)
+```
+
 ## Parameters
 
 | Parameter | Type | Default | Description |
@@ -162,9 +221,9 @@ See @fig:results for details.
 | `title` | string | `"Report Title"` | Main document title |
 | `course` | string | `"Course Module"` | Course or module name (appears in header) |
 | `author` | string | `"Your Name"` | Author name (appears in header) |
-| `logo` | content/none | `none` | University logo (use `image("path")` to load) |
+| `logo` | content/none | `image("assets/logoipsum-404.svg")` | Logo on title page (use `image("path")` to customize or `none` to disable) |
 | `show-toc` | boolean | `false` | Show table of contents on separate page |
-| `bibliography-file` | content/none | `none` | Bibliography (use `bibliography("file.bib", ...)` to load) |
+| `bibliography-file` | content/none | `none` | Bibliography (use `bibliography("file.bib", title: "References", style: "apa")` to load) |
 
 ## Styling Details
 
@@ -198,7 +257,7 @@ All headings are numbered (e.g., 1., 1.1., 1.1.1.)
 my-report/
 ├── report.typ           # Your main document
 ├── references.bib       # Bibliography file
-├── logo.png             # University logo
+├── logo.png             # Your custom logo (optional)
 └── images/
     ├── chart1.png
     └── diagram.svg
