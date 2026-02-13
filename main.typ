@@ -75,6 +75,10 @@
     )
   }
   
+  // Separate numbering for images and tables
+  show figure.where(kind: image): set figure(numbering: "1")
+  show figure.where(kind: table): set figure(numbering: "1")
+  
   // Figure styling
   show figure: it => {
     set align(center)
@@ -82,15 +86,22 @@
     v(0.5em)
   }
   
-  // Figure reference styling (Fig. instead of Figure)
+  // Figure reference styling (Fig. instead of Figure, separate counters)
   show ref: it => {
     let el = it.element
     if el != none and el.func() == figure {
-      let supplement = el.supplement
-      if supplement == [Figure] {
-        link(it.target)[#text(fill: rgb("#2563eb"))[Fig. #numbering(el.numbering, ..counter(figure).at(el.location()))]]
+      if el.kind == image {
+        // For images, display as "Fig. X"
+        let fig-counter = counter(figure.where(kind: image))
+        let num = fig-counter.at(el.location()).first()
+        link(it.target)[#text(fill: rgb("#2563eb"))[Fig. #num]]
+      } else if el.kind == table {
+        // For tables, display as "Table X"
+        let tbl-counter = counter(figure.where(kind: table))
+        let num = tbl-counter.at(el.location()).first()
+        link(it.target)[#text(fill: rgb("#2563eb"))[Table #num]]
       } else {
-        // For other figures (tables, etc.), just make them blue
+        // For other figure types, just make them blue
         link(it.target)[#text(fill: rgb("#2563eb"))[#it]]
       }
     } else if el != none {
