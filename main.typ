@@ -88,14 +88,14 @@
     if el != none and el.func() == figure {
       let supplement = el.supplement
       if supplement == [Figure] {
-        link(it.target, fill: rgb("#2563eb"))[Fig. #numbering(el.numbering, ..counter(figure).at(el.location()))]
+        link(it.target)[#text(fill: rgb("#2563eb"))[Fig. #numbering(el.numbering, ..counter(figure).at(el.location()))]]
       } else {
         // For other figures (tables, etc.), just make them blue
-        link(it.target, fill: rgb("#2563eb"))[#it]
+        link(it.target)[#text(fill: rgb("#2563eb"))[#it]]
       }
     } else if el != none {
       // For headings and other elements with targets, make them blue
-      link(it.target, fill: rgb("#2563eb"))[#it]
+      link(it.target)[#text(fill: rgb("#2563eb"))[#it]]
     } else {
       // For citations and other references without elements, just display as-is
       // The bibliography will handle the styling
