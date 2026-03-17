@@ -25,8 +25,6 @@ A clean and simple Typst template for academic reports and assignments with auto
 | <img src="Demo/report-preview_page-0001.png" width="1000"> | <img src="Demo/report-preview_page-0002.png" width="1000"> |
 | <img src="Demo/report-preview_page-0003.png" width="1000"> | <img src="Demo/report-preview_page-0004.png" width="1000"> |
 
-[View Full Example PDF](https://github.com/Cobos-Bioinfo/Typst-Report-Template/blob/main/Demo/report-preview.pdf)
-
 ## Prerequisites
 
 Before installing this template, you need to have Typst installed on your machine.
@@ -121,7 +119,7 @@ Here's an example of how to use the template in your document:
 )
 ```
 
-See the `Demo/report-preview.typ` file for a complete example.
+See the [Demo/report-preview.typ](Demo/report-preview.typ) file for a complete example.
 
 ### Customizing the Logo
 
