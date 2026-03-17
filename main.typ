@@ -7,10 +7,13 @@
 
 #let report(
   title: "Report Title",
-  course: "Course Module",
   author: "Your Name",
+  course: "Course Module",
+  supervisor: none,
+
   logo: default-logo,
   show-toc: false,
+  heading-numbering: true,
   bibliography-file: none,
   body,
 ) = {
@@ -27,8 +30,8 @@
   // Paragraph settings
   set par(justify: true, leading: 0.65em)
   
-  // Heading numbering
-  set heading(numbering: "1.1.")
+  // Heading numbering (conditionally applied)
+  set heading(numbering: if heading-numbering { "1.1." } else { none })
   
   // Heading styles
   show heading.where(level: 1): it => {
@@ -75,15 +78,25 @@
     )
   }
   
+  // --- FIGURE & TABLE STYLING ---
+
   // Separate numbering for images and tables
   show figure.where(kind: image): set figure(numbering: "1")
   show figure.where(kind: table): set figure(numbering: "1")
   
+  // Position caption above tables
+  show figure.where(kind: table): set figure.caption(position: top)
+
   // Figure styling
   show figure: it => {
     set align(center)
-    it
-    v(0.5em)
+    if it.kind == table {
+      it
+      v(1em) // Space after the table
+    } else {
+      it
+      v(0.5em) // Space after images
+    }
   }
   
   // Figure reference styling (Fig. instead of Figure, separate counters)
@@ -162,6 +175,14 @@
       #course
     ]
     
+    // Optional Supervisor Field
+    #if supervisor != none {
+      v(0.2cm)
+      text(size: 11pt, fill: rgb("#374151"))[
+        #supervisor
+      ]
+    }
+
     #v(0.8cm)
     
     // Date

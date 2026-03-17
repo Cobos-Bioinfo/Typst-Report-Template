@@ -9,7 +9,7 @@ A clean and simple Typst template for academic reports and assignments with auto
 
 ✨ **Clean Title Page** with customizable logo, title, author, course, and date  
 📑 **Optional Table of Contents** on a separate page  
-📝 **Numbered Headings** with navy blue styling (4 levels)  
+📝 **Numbered Headings** with navy blue styling (toggle)  
 📊 **Figure & Table Support** with automatic captions and numbering  
 💻 **Syntax-Highlighted Code Blocks** with light background  
 📚 **APA Bibliography** integration with `.bib` files  
@@ -22,8 +22,8 @@ A clean and simple Typst template for academic reports and assignments with auto
 
 | | |
 |-|-|
-| <img src="Demo/report-preview_page-0001.jpg" width="1000"> | <img src="Demo/report-preview_page-0002.jpg" width="1000"> |
-| <img src="Demo/report-preview_page-0003.jpg" width="1000"> | <img src="Demo/report-preview_page-0004.jpg" width="1000"> |
+| <img src="Demo/report-preview_page-0001.png" width="1000"> | <img src="Demo/report-preview_page-0002.png" width="1000"> |
+| <img src="Demo/report-preview_page-0003.png" width="1000"> | <img src="Demo/report-preview_page-0004.png" width="1000"> |
 
 [View Full Example PDF](https://github.com/Cobos-Bioinfo/Typst-Report-Template/blob/main/Demo/report-preview.pdf)
 
@@ -106,90 +106,22 @@ Then import it using a relative path:
 
 ## Usage
 
-### Minimal Example
+Here's an example of how to use the template in your document:
+
 ```typst
-#import "@local/academic-template:0.1.0": report
-
-#show: report.with(
-  title: "Lab Report 1",
-  course: "BIOL 301",
-  author: "Jane Smith",
-)
-
-= Introduction
-Your content starts here.
-```
-
-### Full Example (Custom Logo, TOC, Bibliography)
-```typst
-#import "@local/academic-template:0.1.0": report
-
 #show: report.with(
   title: "Comprehensive Analysis of Machine Learning in Genomics",
   course: "CS 589 - Bioinformatics",
   author: "John Doe",
-  logo: image("my-university-logo.png"),  // Replace default logo
+  supervisor: "Supervised by: Prof. Alejandro Cobos",
+  
   show-toc: true,
-  bibliography-file: bibliography(
-    "references.bib",
-    title: "References",
-    style: "apa",
-  ),
+  heading-numbering: true,
+  bibliography-file: bibliography("references.bib", style: "apa"),
 )
-
-= Introduction
-Recent advances @smith2024 have shown...
-
-= Methods
-== Data Collection
-== Analysis
-
-= Results
-See @fig:results for details.
-
-#figure(
-  image("results.png", width: 80%),
-  caption: [Experimental results],
-) <fig:results>
-
-= Discussion
-= Conclusion
 ```
 
-### Using Citations
-
-To use citations in your document:
-
-1. **Create a `.bib` file** (e.g., `references.bib`) in the same directory as your document:
-```bibtex
-   @article{smith2024,
-     author  = {John Smith and Emily Johnson},
-     title   = {Artificial Intelligence in Modern Healthcare},
-     journal = {Journal of Medical Systems},
-     year    = {2024},
-     volume  = {48},
-     pages   = {1--15},
-   }
-```
-
-2. **Load the bibliography** in your template configuration:
-```typst
-   #show: report.with(
-     // ... other parameters
-     bibliography-file: bibliography(
-       "references.bib",
-       title: "References",  // Optional: customize title
-       style: "apa",         // Options: "apa", "ieee", "chicago-notes", etc.
-     ),
-   )
-```
-
-3. **Cite in your text** using `@` followed by the citation key:
-```typst
-   Recent research @smith2024 has demonstrated...
-```
-
-The bibliography will automatically appear at the end of your document.
+See the `Demo/report-preview.typ` file for a complete example.
 
 ### Customizing the Logo
 
@@ -219,10 +151,12 @@ Navigate to the template installation and replace `assets/logoipsum-404.svg` wit
 | Parameter | Type | Default | Description |
 |-----------|------|---------|-------------|
 | `title` | string | `"Report Title"` | Main document title |
-| `course` | string | `"Course Module"` | Course or module name (appears in header) |
 | `author` | string | `"Your Name"` | Author name (appears in header) |
+| `course` | string | `"Course Module"` | Course or module name (appears in header) |
+| `supervisor` | string/none | `none` | Optional role line below course (e.g., "Tutor: Name") |
 | `logo` | content/none | `image("assets/logoipsum-404.svg")` | Logo on title page (use `image("path")` to customize or `none` to disable) |
 | `show-toc` | boolean | `false` | Show table of contents on separate page |
+| `heading-numbering` | boolean | `true` | Toggle automatic numbering for all headings |
 | `bibliography-file` | content/none | `none` | Bibliography (use `bibliography("file.bib", title: "References", style: "apa")` to load) |
 
 ## Styling Details
@@ -248,9 +182,9 @@ All headings are numbered (e.g., 1., 1.1., 1.1.1.)
 - Syntax highlighting support
 
 ### Figures & Tables
-- Centered alignment
-- Automatic numbering
-- Figure references display as "Fig. X" instead of "Figure X"
+- Centered alignment and automatic numbering.
+- Table captions are positioned above the table.
+- Cross-references display as "Fig. X" or "Table X" in blue text.
 
 ## File Structure Example
 ```
